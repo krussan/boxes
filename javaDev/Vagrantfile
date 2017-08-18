@@ -44,6 +44,8 @@ Vagrant.configure("2") do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
+  config.vm.synced_folder "../common", "/vagrant_common"
+  config.vm.synced_folder "../local", "/vagrant_local"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -78,9 +80,10 @@ Vagrant.configure("2") do |config|
 	yum install -y dos2unix
 	
 	dos2unix /vagrant/*.sh
+	dos2unix /vagrant_common/*.sh
   SHELL
   
-  config.vm.provision "shell", path: "install-gnome.sh"
+  config.vm.provision "shell", path: "../common/install-gnome.sh"
   
   #Java
   config.vm.provision "shell", inline: "yum install java-1.8.0-openjdk-devel -y"
@@ -89,31 +92,31 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: "yum groupinstall 'Development Tools' -y"
 
   #protobuf 2.4.1
-  config.vm.provision "shell", path: "install-protobuf.sh"
+  config.vm.provision "shell", path: "../common/install-protobuf.sh"
   
   #Eclipse
-  config.vm.provision "shell", path: "install-eclipse.sh"
+  config.vm.provision "shell", path: "../common/install-eclipse.sh"
 
   #git
   config.vm.provision "shell", inline: "yum install git -y"
   
   #maven
-  config.vm.provision "shell", path: "install-maven.sh"
+  config.vm.provision "shell", path: "../common/install-maven.sh"
   
   #private key if exists
-  config.vm.provision "shell", path: "install-privkey.sh"
+  config.vm.provision "shell", path: "../common/install-privkey.sh"
 
   #maven settings if exists
-  config.vm.provision "shell", path: "install-maven-settings.sh"
+  config.vm.provision "shell", path: "../common/install-maven-settings.sh"
 
   #set shortcut for terminal window
-  config.vm.provision "shell", path: "set-terminal-shortcut.sh"
+  config.vm.provision "shell", path: "../common/set-terminal-shortcut.sh"
 
   #set terminal colors
-  config.vm.provision "shell", path: "set-terminal-colors.sh"
+  config.vm.provision "shell", path: "../common/set-terminal-colors.sh"
 
   #mount ultra
-  config.vm.provision "shell", path: "mount-ultra.sh"
+  config.vm.provision "shell", path: "../common/mount-ultra.sh"
   
   #clone git repositories
   #config.vm.provision "shell", path: "clone-git-repos.sh"
