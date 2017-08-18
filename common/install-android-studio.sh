@@ -3,13 +3,13 @@ wget https://dl.google.com/dl/android/studio/ide-zips/2.3.3.0/android-studio-ide
 unzip /opt/android-studio-ide-162.4069837-linux.zip -d /opt
 
 
-cat <<-SCRIPT >> /usr/share/applications/studio.desktop
+cat <<-SCRIPT > /usr/share/applications/studio.desktop
 		[Desktop Entry]
 		Encoding=UTF-8
 		Name=Android Studio
 		Comment=Android Studio
-		Exec=/opt/android-studio/studio.sh
-		Icon=/opt/eclipse/icon.xpm
+		Exec=/opt/android-studio/bin/studio.sh
+		Icon=/opt/android-studio/bin/studio.png
 		Terminal=false
 		Type=Application
 		Categories=GNOME;Application;Development;
