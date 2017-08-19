@@ -1,0 +1,9 @@
+tools
+platform-tools
+platforms;android-23
+platforms;android-26
+add-ons;addon-google_apis-google-24
+extras;android;m2repository
+extras;google;m2repository
+emulator
+build-tools;26.0.1

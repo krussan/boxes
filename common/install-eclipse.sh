@@ -1,7 +1,11 @@
 #/bin/sh
+ECLIPSE_FILENAME=eclipse-jee-oxygen-R-linux-gtk-x86_64.tar.gz
 if [ ! -d /opt/eclipse ]; then
-	wget http://ftp.acc.umu.se/mirror/eclipse.org/technology/epp/downloads/release/oxygen/R/eclipse-jee-oxygen-R-linux-gtk-x86_64.tar.gz -P /opt -nv
-	tar xvf /opt/eclipse-jee-oxygen-R-linux-gtk-x86_64.tar.gz -C /opt
+    if [ ! -f /opt/$ECLIPSE_FILENAME ]; then
+		wget http://ftp.acc.umu.se/mirror/eclipse.org/technology/epp/downloads/release/oxygen/R/$ECLIPSE_FILENAME -P /opt -nv
+	fi
+	
+	tar xvf /opt/$ECLIPSE_FILENAME -C /opt
 
 	chmod -R +r /opt/eclipse
 	touch /usr/bin/eclipse
@@ -27,5 +31,6 @@ if [ ! -d /opt/eclipse ]; then
 			StartupNotify=true
 		SCRIPT
 
-	rm /opt/*.tar.gz
 fi
+
+rm -f /opt/$ECLIPSE_FILENAME

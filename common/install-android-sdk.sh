@@ -1,7 +1,13 @@
 #!/bin/sh
+SDK_FILENAME=android-sdk_r23-linux.tgz
 if [ ! -d /opt/android-sdk-linux ]; then
-	wget http://dl.google.com/android/android-sdk_r23-linux.tgz -P /opt -nv 
-	tar -xvf /opt/android-sdk_r23-linux.tgz -C /opt
+    echo Running android SDK installation ...
+	
+	if [ ! -f /opt/$SDK_FILENAME ]; then 
+		wget http://dl.google.com/android/$SDK_FILENAME -P /opt -nv 
+	fi
+	
+	tar -xvf /opt/$SDK_FILENAME -C /opt
 
 	# create android group and add vagrant user to that group
 	useradd android -U
@@ -18,13 +24,16 @@ if [ ! -d /opt/android-sdk-linux ]; then
 	#find . -type f -perm 640 -print -exec chmod 644 {} \;
 
 	#install packages
-	sudo -u android update-android-sdk.sh
+	sudo -u android /vagrant_common/update-android-sdk.sh
 
 	# Make a symbolic link to adb executable
 	ln -s /opt/android-sdk-linux/platform-tools/adb /usr/bin/adb
+	ln -s /opt/android-sdk-linux/tools/bin/sdkmanager /usr/bin/sdkmanager
 
 	# Create environment variables
 	echo export ANDROID_HOME=/opt/android-sdk-linux >> /home/vagrant/.bashrc
 	echo PATH=\$PATH:\$ANDROID_HOME/tools:\$ANDROID_HOME/platform-tools >> /home/vagrant/.bashrc
 	echo export PATH >> /home/vagrant/.bashrc
 fi
+
+rm -f /opt/$SDK_FILENAME
