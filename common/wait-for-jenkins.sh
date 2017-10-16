@@ -5,3 +5,5 @@ while [ $STATUS != "200" ] && [ $STATUS != "403" ]; do
 	printf $STATUS
 	printf ".."
 done
+
+echo "Done"
