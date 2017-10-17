@@ -24,12 +24,16 @@ if [ ! -f /root/initialAdminPassword ]; then
 fi
 
 if [ ! -f /var/lib/jenkins/cli.jar ]; then
+    /vagrant_common/wait-for-jenkins.sh
+    
 	# download the CLI jar from the web server. We'll use this later to install plugins
 	wget -O /var/lib/jenkins/cli.jar http://localhost:8080/jnlpJars/jenkins-cli.jar
 	chown jenkins:jenkins /var/lib/jenkins/cli.jar
 fi
 
 if [ ! -f /var/lib/jenkins/updates/default.json ]; then
+    /vagrant_common/wait-for-jenkins.sh
+
 	# Setup the update center
 	wget http://updates.jenkins-ci.org/update-center.json -qO- | sed '1d;$d' > /var/lib/jenkins/updates/default.json
 	chown jenkins:jenkins /var/lib/jenkins/updates/default.json
@@ -57,3 +61,6 @@ java -jar /var/lib/jenkins/cli.jar -s http://127.0.0.1:8080 install-plugin $PLUG
 # Restart after plugin installation
 service jenkins restart
 /vagrant_common/wait-for-jenkins.sh
+
+# output key
+cat /root/initialAdminPassword
