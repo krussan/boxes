@@ -1,3 +1,4 @@
 id_rsa
 .vagrant
 local
+jenkins/dsl_seed_job_generated.xml
