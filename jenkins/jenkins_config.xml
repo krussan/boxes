@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<hudson>
+  <disabledAdministrativeMonitors/>
+  <version>1.0</version>
+  <numExecutors>2</numExecutors>
+  <mode>NORMAL</mode>
+  <useSecurity>true</useSecurity>
+  <authorizationStrategy class="hudson.security.GlobalMatrixAuthorizationStrategy">
+    <permission>hudson.model.Computer.Build:dsl-user</permission>
+    <permission>hudson.model.Hudson.Administer:admin</permission>
+    <permission>hudson.model.Item.Build:dsl-user</permission>
+    <permission>hudson.model.Item.Cancel:dsl-user</permission>
+    <permission>hudson.model.Item.Configure:dsl-user</permission>
+    <permission>hudson.model.Item.Create:dsl-user</permission>
+    <permission>hudson.model.Item.Delete:dsl-user</permission>
+    <permission>hudson.model.Item.Discover:dsl-user</permission>
+    <permission>hudson.model.Item.Read:dsl-user</permission>
+    <permission>hudson.model.Item.Workspace:dsl-user</permission>
+    <permission>hudson.model.Run.Delete:dsl-user</permission>
+    <permission>hudson.model.Run.Update:dsl-user</permission>
+    <permission>hudson.model.View.Configure:dsl-user</permission>
+    <permission>hudson.model.View.Create:dsl-user</permission>
+    <permission>hudson.model.View.Delete:dsl-user</permission>
+    <permission>hudson.model.View.Read:dsl-user</permission>
+  </authorizationStrategy>
+  <securityRealm class="hudson.security.HudsonPrivateSecurityRealm">
+    <disableSignup>true</disableSignup>
+    <enableCaptcha>false</enableCaptcha>
+  </securityRealm>
+  <disableRememberMe>false</disableRememberMe>
+  <projectNamingStrategy class="jenkins.model.ProjectNamingStrategy$DefaultProjectNamingStrategy"/>
+  <workspaceDir>${JENKINS_HOME}/workspace/${ITEM_FULLNAME}</workspaceDir>
+  <buildsDir>${ITEM_ROOTDIR}/builds</buildsDir>
+  <markupFormatter class="hudson.markup.EscapedMarkupFormatter"/>
+  <jdks/>
+  <viewsTabBar class="hudson.views.DefaultViewsTabBar"/>
+  <myViewsTabBar class="hudson.views.DefaultMyViewsTabBar"/>
+  <clouds/>
+  <scmCheckoutRetryCount>0</scmCheckoutRetryCount>
+  <views>
+    <hudson.model.AllView>
+      <owner class="hudson" reference="../../.."/>
+      <name>all</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+    </hudson.model.AllView>
+  </views>
+  <primaryView>all</primaryView>
+  <slaveAgentPort>-1</slaveAgentPort>
+  <label></label>
+  <crumbIssuer class="hudson.security.csrf.DefaultCrumbIssuer">
+    <excludeClientIPFromCrumb>false</excludeClientIPFromCrumb>
+  </crumbIssuer>
+  <nodeProperties/>
+  <globalNodeProperties/>
+</hudson>
