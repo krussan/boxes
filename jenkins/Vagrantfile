@@ -93,4 +93,8 @@ Vagrant.configure("2") do |config|
   #install jenkins
   config.vm.provision "shell", path: "../common/install-jenkins.sh"
 
+  if File.exists?("../../local_jenkins_config.sh")
+    config.vm.provision "shell", path: "../../local_jenkins_config.sh"
+  end
+  
 end
