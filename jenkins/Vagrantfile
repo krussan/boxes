@@ -45,7 +45,10 @@ Vagrant.configure("2") do |config|
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
   config.vm.synced_folder "../common", "/vagrant_common", type: "virtualbox"
-  config.vm.synced_folder "../local", "/vagrant_local", type: "virtualbox"
+  
+  if File.directory?(File.expand_path("../local"))
+    config.vm.synced_folder "../local", "/vagrant_local", type: "virtualbox"  
+  end
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
