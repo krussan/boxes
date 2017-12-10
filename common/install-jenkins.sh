@@ -1,3 +1,5 @@
+#!/bin/sh
+
 PLUGINS="git xunit job-dsl subversion authorize-project greenballs matrix-auth"
 RESTART_REQ=0
 
@@ -95,3 +97,6 @@ fi
 
 # # output key
 cat /root/initialAdminPassword
+
+# setup bash for jenkins user
+usermod -s /bin/bash jenkins
