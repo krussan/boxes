@@ -1,10 +1,11 @@
 #!/bin/sh
-STUDIO_FILENAME=android-studio-ide-162.4069837-linux.zip
+STUDIO_FILENAME=android-studio-ide-171.4443003-linux.zip
 if [ ! -d /opt/android-studio ]; then
 	echo Running android studio installation ...
 
 	if [ ! -f /opt/$STUDIO_FILENAME ]; then
-		wget https://dl.google.com/dl/android/studio/ide-zips/2.3.3.0/$STUDIO_FILENAME -P /opt -nv
+		wget https://dl.google.com/dl/android/studio/ide-zips/3.0.1.0/$STUDIO_FILENAME -P /opt -nv
+			 
 	fi
 	
 	unzip /opt/$STUDIO_FILENAME -d /opt

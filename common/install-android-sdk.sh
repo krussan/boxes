@@ -1,13 +1,13 @@
 #!/bin/sh
-SDK_FILENAME=android-sdk_r23-linux.tgz
+SDK_FILENAME=sdk-tools-linux-3859397.zip
 if [ ! -d /opt/android-sdk-linux ]; then
     echo Running android SDK installation ...
 	
 	if [ ! -f /opt/$SDK_FILENAME ]; then 
-		wget http://dl.google.com/android/$SDK_FILENAME -P /opt -nv 
+		wget https://dl.google.com/android/repository/$SDK_FILENAME -P /opt -nv 
 	fi
-	
-	tar -xvf /opt/$SDK_FILENAME -C /opt
+
+	unzip /opt/$SDK_FILENAME -d /opt/android-sdk-linux
 
 	# create android group and add vagrant user to that group
 	useradd android -U
