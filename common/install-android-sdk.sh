@@ -15,6 +15,7 @@ if [ ! -d /opt/android-sdk-linux ]; then
 
 	# Make android group owner of the SDK folder
 	chown -R android:android /opt/android-sdk-linux
+	find /opt/android-sdk-linux -type d -exec chmod 775 {} +
 
 	# Make a symbolic link to android executable
 	ln -s /opt/android-sdk-linux/tools/android /usr/bin/android 
@@ -36,4 +37,4 @@ if [ ! -d /opt/android-sdk-linux ]; then
 	echo export PATH >> /home/vagrant/.bashrc
 fi
 
-rm -f /opt/$SDK_FILENAME
+#rm -f /opt/$SDK_FILENAME
