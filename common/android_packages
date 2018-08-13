@@ -6,4 +6,4 @@ add-ons;addon-google_apis-google-24
 extras;android;m2repository
 extras;google;m2repository
 emulator
-build-tools;26.0.2
+build-tools;26.0.1
