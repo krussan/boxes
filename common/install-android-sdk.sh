@@ -1,5 +1,5 @@
 #!/bin/sh
-SDK_FILENAME=sdk-tools-linux-3859397.zip
+SDK_FILENAME=sdk-tools-linux-4333796.zip
 if [ ! -d /opt/android-sdk-linux ]; then
     echo Running android SDK installation ...
 	

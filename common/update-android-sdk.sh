@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #tools
 #platform-tools
@@ -9,6 +9,4 @@
 #These are indicated by installation of android studio
 #extra-android-m2repository,
 
-#(while sleep 3; do echo "Y"; done) | /opt/android-sdk-linux/tools/bin/sdkmanager --package_file=/vagrant_common/android_packages
-./android-accept-license.sh "/opt/android-sdk-linux/tools/bin/sdkmanager --package_file=/vagrant_common/android_packages"
-#./android-accept-license.sh "/opt/android-sdk-linux/tools/bin/sdkmanager --licenses"
+while read p; do /vagrant_common/android-accept-license.sh "/opt/android-sdk-linux/tools/bin/sdkmanager ${p}";done < /vagrant_common/android_packages
