@@ -86,9 +86,12 @@ Vagrant.configure("2") do |config|
   
   #Java
   config.vm.provision "shell", inline: "yum install java-1.8.0-openjdk-devel -y"
-  
+
   #Build essentials
   config.vm.provision "shell", inline: "yum groupinstall 'Development Tools' -y"
+
+  #EPEL release
+  config.vm.provision "shell", inline: "yum install epel-release -y"
 
   #protobuf 2.4.1
   config.vm.provision "shell", path: "../common/install-protobuf.sh"

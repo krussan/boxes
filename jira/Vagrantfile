@@ -37,7 +37,7 @@ Vagrant.configure("2") do |config|
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
   # your network.
-  # config.vm.network "public_network"
+  config.vm.network "public_network"
 
   # Share an additional folder to the guest VM. The first argument is
   # the path on the host to the actual folder. The second argument is
@@ -54,19 +54,10 @@ Vagrant.configure("2") do |config|
   #config.vbguest.auto_update = false
   
   config.vm.provider "virtualbox" do |vb|
-    # Display the VirtualBox GUI when booting the machine
-    vb.gui = true
-    #   # Customize the amount of memory on the VM:
+    # Customize the amount of memory on the VM:
     vb.memory = "4096"
 	vb.cpus = 2
 	
-	vb.customize ["modifyvm", :id, "--accelerate3d", "on"]
-	vb.customize ["modifyvm", :id, "--accelerate2dvideo", "on"]
-	vb.customize ["modifyvm", :id, "--vram", "64"]
-
-	#vb.customize ["modifyvm", :id, "--accelerate3d", "on"]
-	#vb.customize ["modifyvm", :id, "--accelerate2dvideo", "on"]
-	#vb.customize ["modifyvm", :id, "--vram", "64"]
   end
 
   # View the documentation for the provider you are using for more
@@ -77,47 +68,25 @@ Vagrant.configure("2") do |config|
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", path: "../common/init.sh"
   
-  config.vm.provision "shell", path: "../common/install-gnome.sh"
-  
   #Java
   config.vm.provision "shell", inline: "yum install java-1.8.0-openjdk-devel -y"
-  
+
   #Build essentials
   config.vm.provision "shell", inline: "yum groupinstall 'Development Tools' -y"
 
   #EPEL release
   config.vm.provision "shell", inline: "yum install epel-release -y"
 
-  #protobuf 2.4.1
-  config.vm.provision "shell", path: "../common/install-protobuf.sh"
-  
-  #Eclipse
-  config.vm.provision "shell", path: "../common/install-eclipse.sh"
-
-  #git
-  config.vm.provision "shell", inline: "yum install git -y"
-  
-  #maven
-  config.vm.provision "shell", path: "../common/install-maven.sh"
-  
   #private key if exists
   config.vm.provision "shell", path: "../common/install-privkey.sh"
-
-  #maven settings if exists
-  config.vm.provision "shell", path: "../common/install-maven-settings.sh"
-
-  #set shortcut for terminal window
-  config.vm.provision "shell", path: "../common/set-terminal-shortcut.sh"
-
-  #set terminal colors
-  config.vm.provision "shell", path: "../common/set-terminal-colors.sh"
 
   #mount ultra
   config.vm.provision "shell", path: "../common/mount-ultra.sh"
   
-  #clone git repositories
-  #config.vm.provision "shell", path: "clone-git-repos.sh"
+  #Postgres
+  config.vm.provision "shell", path: "../common/install-postgres.sh"
   
-  config.vm.provision "shell", inline: "reboot"
+  #Jira
+  config.vm.provision "shell", path: "../common/install-jira.sh"
 
 end
