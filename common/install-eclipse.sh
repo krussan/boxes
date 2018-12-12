@@ -2,6 +2,7 @@
 ECLIPSE_FILENAME=eclipse-jee-oxygen-R-linux-gtk-x86_64.tar.gz
 if [ ! -d /opt/eclipse ]; then
     if [ ! -f /opt/$ECLIPSE_FILENAME ]; then
+		echo "Downloading..."
 		wget http://ftp.acc.umu.se/mirror/eclipse.org/technology/epp/downloads/release/oxygen/R/$ECLIPSE_FILENAME -P /opt -nv
 	fi
 	

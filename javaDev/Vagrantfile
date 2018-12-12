@@ -115,6 +115,9 @@ Vagrant.configure("2") do |config|
   #mount ultra
   config.vm.provision "shell", path: "../common/mount-ultra.sh"
   
+  #disable animations
+  config.vm.provision "shell", path: "../common/disable-animations.sh"
+  
   #clone git repositories
   #config.vm.provision "shell", path: "clone-git-repos.sh"
   

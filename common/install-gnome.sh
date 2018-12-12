@@ -16,5 +16,9 @@ chown -R vagrant:vagrant /home/vagrant/.config
 #echo "exec /usr/bin/cinnamon-session" >> /home/vagrant/.xinitrc
 
 #### Enable boot into graphical interface
-systemctl set-default graphical.target
+if [ -x "$(command -v systemctl)" ]; then
+    systemctl set-default graphical.target
+else
+	echo id:5:initdefault: > /etc/inittab
+fi
 
